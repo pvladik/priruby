@@ -17,12 +17,30 @@ echo "<div id='mypage'>
  
 <div id='lista1'>
  PN: 
- 
- 
- <div id='lista2'>
- PN: 
+ <div class='box'>
+  <select>
+    <option>Option 1</option>
+    <option>Option 2</option>
+    <option>Option 3</option>
+    <option>Option 4</option>
+    <option>Option 5</option>
+  </select>
  </div>
- 
+  </div>
+  
+ <div id='lista2'>
+ DN: 
+ <div class='box'>
+  <select>
+    <option>Option 1</option>
+    <option>Option 2</option>
+    <option>Option 3</option>
+    <option>Option 4</option>
+    <option>Option 5</option>
+  </select>
+ </div>
+ </div>
+
 
 
 

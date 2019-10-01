@@ -8,8 +8,8 @@ $db_name="priruby";
 
 /*
 $db_host="wm80.wedos.net";
-$db_user="a95210_mojedb";
-$db_pass="racheLL.91";
-$db_name="d95210_mojedb";
+$db_user="w95210_priruby";
+$db_pass="prirubA1.";
+$db_name="d95210_priruby";
 */
 ?>
