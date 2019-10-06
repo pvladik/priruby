@@ -1,0 +1,50 @@
+version: '3'
+services:
+    web:
+        image: nginx
+        volumes:
+            - ./.docker/conf/nginx/default.conf:/etc/nginx/conf.d/default.conf
+            - ./:/var/src/html
+        ports:
+            - 88:80
+        restart: always
+        depends_on:
+            - php
+    php:
+        build: .docker/
+        restart: always
+        volumes:
+            - ./src/.:/var/src/html
+            - ./.docker/conf/php/php.ini:/usr/local/etc/php/conf.d/php.ini
+        environment:
+            MYSQL_HOSTNAME: db
+            MYSQL_PORT: 3307
+            MYSQL_DATABASE: db
+            MYSQL_USER: db
+            MYSQL_PASSWORD: db
+        depends_on:
+            - db
+    db:
+        build: .docker/images/mysql/
+        restart: always
+        environment:
+            MYSQL_DATABASE: 'db'
+            MYSQL_USER: 'db'
+            MYSQL_PASSWORD: 'db'
+            MYSQL_ROOT_PASSWORD: 'db'
+        ports:
+            - '3307:3306'
+        expose:
+            - '3307'
+        volumes:
+            - ./.docker/images/mysql/persist:/var/lib/mysql
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        depends_on:
+            - db
+        restart: always
+        ports:
+            - '87:80'
+        environment:
+            PMA_HOST: db
+            MYSQL_ROOT_PASSWORD: db
